@@ -33,11 +33,11 @@
             <div class="login-content">
                 <div class="login-logo">
                     <a href="index.html">
-                        <img class="align-content" src="myadmin/images/logo1.png" alt="">
+                        <img class="align-content" src="myadmin/images/logo12.png" alt="">
                     </a>
                 </div>
                 <div class="login-form">
-                    <form action="myadmin/setting/buatakun.php" method="POST" >
+                    <form action="controll/reg.php" method="POST" >
 <p> Silahkan Mengisi Form Pendaftaran Berikut ini ! </p>
 
                             <div class="form-group">
@@ -47,6 +47,10 @@
                             <div class="form-group">
                             <label>KK</label>
                             <input id="kk" name="kk" type="kk" class="form-control col-sm-6" placeholder="KK">
+                        </div>
+                           <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input id="nama_lengkap" name="nama_lengkap" type="nama_lengkap" class="form-control col-sm-8" placeholder="Nama Lengkap">
                         </div>
                         <div class="form-group">
                             <label>Username</label>

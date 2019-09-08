@@ -267,7 +267,7 @@
                         Copyright &copy; 2019 E-Ktp Online
                     </div>
                     <div class="col-sm-6 text-right">
-                        Designed by <a href="https://colorlib.com">Colorlib</a>
+                        Designed by <a href="https://adytya_kha.com">adytya_kha</a>
                     </div>
                 </div>
             </div>

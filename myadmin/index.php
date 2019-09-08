@@ -1,3 +1,30 @@
+<?php 
+session_start();
+
+include_once 'setting/database.php';
+include_once 'setting/status_session.php';
+$username = $_SESSION['username'];
+
+$nama_lengkap = mysqli_query($koneksi, "SELECT nama_lengkap FROM admin ");
+$data=mysqli_fetch_array($nama_lengkap);
+
+
+
+?>
+
+        <?php
+
+require 'setting/database.php';
+
+ 
+  $sql = $koneksi->query("SELECT * FROM dataektp WHERE status='0'");
+ while ($tampil=$sql->fetch_assoc()) {
+  $e=$sql->num_rows;
+
+   # code...
+ }
+?><!-- Content -->
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -45,7 +72,7 @@
                         <a href="histori.php"><i class="menu-icon fa fa-history"></i>HISTORI </a>
                     </li>
                      <li class>
-                        <a href="sigout.html"><i class="menu-icon fa fa-sign-out"></i>KELUAR </a>
+                        <a href="setting/logout.php"><i class="menu-icon fa fa-sign-out"></i>KELUAR </a>
                     </li>
 
                   
@@ -72,8 +99,10 @@
                 </div>
             </div>
             <div class="top-right">
-                <div class="header-menu">
+                <div class="header-menu"> 
                     <div class="header-left">
+<i class="fa fa-user  ">&nbsp;<?php echo  $data['nama_lengkap'];?> </i>
+
                         <button class="search-trigger"><i class="fa fa-search"></i></button>
                         <div class="form-inline">
                             <form class="search-form">
@@ -82,26 +111,38 @@
                             </form>
                         </div>
 
+
+
+
+
                         <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>
-                                <span class="count bg-danger">3</span>
+                                <span class="count bg-danger"><?php echo $e; ?></span>
                             </button>
+
+
+
+
                             <div class="dropdown-menu" aria-labelledby="notification">
-                                <p class="red">You have 3 Notification</p>
+                                 <p class="red">You have <?php echo $e; ?> Notification</p>
+                                <?php 
+    require 'setting/database.php';
+    $query = mysqli_query($koneksi, "SELECT * FROM dataektp WHERE status='0' ");
+                        while($array = mysqli_fetch_array($query)){
+                          echo '
+                               
                                 <a class="dropdown-item media" href="#">
                                     <i class="fa fa-check"></i>
-                                    <p>Server #1 overloaded.</p>
+                                    <p> <span class="name">'.$array['nik'].'</span></p>
                                 </a>
-                                <a class="dropdown-item media" href="#">
-                                    <i class="fa fa-info"></i>
-                                    <p>Server #2 overloaded.</p>
-                                </a>
-                                <a class="dropdown-item media" href="#">
-                                    <i class="fa fa-warning"></i>
-                                    <p>Server #3 overloaded.</p>
-                                </a>
+                                
+                               ' ; } ?>
+    
                             </div>
+
+   
+
                         </div>
 
                     </div>
@@ -114,11 +155,19 @@
                         <div class="user-menu dropdown-menu">
                             
 
+ 
                             <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
                         </div>
+                         
                     </div>
+                    
+               
+                             
+
+               
 
                 </div>
+               
             </div>
         </header>
         <!-- /#header -->
@@ -136,7 +185,7 @@ require 'setting/database.php';
 
    # code...
  }
-  $sql = $koneksi->query("SELECT * FROM dataektp");
+  $sql = $koneksi->query("SELECT * FROM dataektp WHERE status='0'");
  while ($tampil=$sql->fetch_assoc()) {
   $c=$sql->num_rows;
 
@@ -357,7 +406,7 @@ require 'setting/database.php';
                         Copyright &copy; 2019 E-Ktp Online
                     </div>
                     <div class="col-sm-6 text-right">
-                        Designed by <a href="https://colorlib.com">Colorlib</a>
+                        Designed by <a href="https://adytya_kha.com">adytya_kha</a>
                     </div>
                 </div>
             </div>
